@@ -1,0 +1,4 @@
+{
+  "cwd": "/home/ash/.pi/sub-agents/scout",
+  "description": "Spawn a fresh scout agent to research a topic and return findings. Always use `delegate_scout` for web searches or to get weather for a location. The scout has its own clean context."
+}
