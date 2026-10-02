@@ -38,11 +38,11 @@ In the TUI the tool displays its label and cwd alongside the header.
 
 ### herdr_send_prompt
 
-Send a prompt to an agent pane. With `submit=true` (default), presses Enter after typing.
+Send a prompt to an agent pane. With `submit=true` (default), presses Enter after typing. In the TUI the tool displays the target, submit flag, and the first ~60 chars of the text alongside the header.
 
 ### herdr_read_agent
 
-Read recent/visible output text from an agent pane.
+Read recent/visible output text from an agent pane. In the TUI the tool displays the target, source, lines, and format alongside the header.
 
 ### herdr_wait_agent
 
@@ -60,7 +60,7 @@ For workspace cleanup after closing an agent pane, always also close the workspa
 
 ### herdr_reset_agent
 
-Resets the agent, starting a new session, reloading extensions and skills, and optionally setting the LLM model. Accepts `agent` (pane id, agent name, or label) and an optional `model` (LLM model identifier). Flow: `/new` → 1s → `/reload` → 1s → (if `model` set) `/model <model>` → 0.5s → ` ` (confirm).
+Resets the agent, starting a new session, reloading extensions and skills, and optionally setting the LLM model. Accepts `agent` (pane id, agent name, or label) and an optional `model` (LLM model identifier). Flow: `/new` → 1s → `/reload` → 1s → (if `model` set) `/model <model>` → 0.5s → ` ` (confirm). In the TUI the tool displays the target agent and model alongside the header.
 
 ### herdr_delegate
 
