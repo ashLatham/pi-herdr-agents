@@ -58,6 +58,10 @@ Destructively close a pane, tab, or workspace. Accepts `type` ("pane", "tab", or
 
 For workspace cleanup after closing an agent pane, always also close the workspace — closing only the agent pane leaves the workspace alive.
 
+### herdr_reset_agent
+
+Resets the agent, starting a new session, reloading extensions and skills, and optionally setting the LLM model. Accepts `agent` (pane id, agent name, or label) and an optional `model` (LLM model identifier). Flow: `/new` → 1s → `/reload` → 1s → (if `model` set) `/model <model>` → 0.5s → ` ` (confirm).
+
 ### herdr_delegate
 
 Spawn a fresh agent, send a prompt, wait for completion, and return the response — all in one call. Default name follows the convention `delegate-<timestamp>`. Uses the same cascade path as `herdr_new_agent` so labels/cwd are reused across calls instead of creating duplicate tabs/workspace each time.

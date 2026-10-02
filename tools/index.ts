@@ -31,6 +31,7 @@ import {
 } from "./cascade.js";
 import { raceIdleDone, transitionWaitArgs } from "./lifecycle.js";
 import { registerDelegate } from "./delegate.js";
+import { registerReset } from "./reset.js";
 import { registerSubAgents } from "./subagents.js";
 
 export function registerOrchestration(pi: ExtensionAPI): void {
@@ -350,5 +351,6 @@ export function registerOrchestration(pi: ExtensionAPI): void {
 	});
 
 	registerDelegate(pi);
+	registerReset(pi);
 	registerSubAgents(pi);
 };
