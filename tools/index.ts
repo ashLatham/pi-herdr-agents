@@ -69,6 +69,20 @@ export function registerOrchestration(pi: ExtensionAPI): void {
 				{ paneId: pid.data, submitted },
 			);
 		},
+		renderCall(args, theme) {
+			const submitted = args.submit !== false;
+			const preview =
+				args.text && args.text.length > 60
+					? args.text.slice(0, 57) + "\u2026"
+					: args.text ?? "";
+			let text = theme.fg("toolTitle", theme.bold("herdr_send_prompt "));
+			text += theme.fg("accent", args.target ?? "");
+			text += theme.fg(
+				"dim",
+				`\n  submit: ${submitted}  text: ${preview}`,
+			);
+			return new Text(text, 0, 0);
+		},
 	});
 
 	pi.registerTool({
@@ -123,6 +137,18 @@ export function registerOrchestration(pi: ExtensionAPI): void {
 				text,
 				truncated,
 			});
+		},
+		renderCall(args, theme) {
+			const source = args.source ?? "recent";
+			const lines = args.lines ?? 50;
+			const format = args.format ?? "text";
+			let text = theme.fg("toolTitle", theme.bold("herdr_read_agent "));
+			text += theme.fg("accent", args.target ?? "");
+			text += theme.fg(
+				"dim",
+				`\n  source: ${source}  lines: ${lines}  format: ${format}`,
+			);
+			return new Text(text, 0, 0);
 		},
 	});
 

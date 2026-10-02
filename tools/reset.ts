@@ -11,6 +11,7 @@
 // matching the style of herdr_send_prompt (thin wrapper over `agent prompt`).
 
 import type { ExtensionAPI } from "@earendil-works/pi-coding-agent";
+import { Text } from "@earendil-works/pi-tui";
 import { Type } from "typebox";
 import { herdr } from "../herdr.js";
 import type { ToolReturn } from "../env.js";
@@ -83,6 +84,16 @@ export function registerReset(pi: ExtensionAPI): void {
 				`Reset agent "${p.agent}" (pane ${paneId}): ${steps.join(" → ")}.`,
 				{ paneId, steps, model: p.model ?? null },
 			);
+		},
+		renderCall(args, theme) {
+			let text = theme.fg("toolTitle", theme.bold("herdr_reset_agent "));
+			text += theme.fg("accent", args.agent ?? "");
+			if (args.model) {
+				text += theme.fg("dim", `\n  model: ${args.model}`);
+			} else {
+				text += theme.fg("dim", `\n  model: (unchanged)`);
+			}
+			return new Text(text, 0, 0);
 		},
 	});
 }
