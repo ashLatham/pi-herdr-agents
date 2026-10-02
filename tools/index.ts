@@ -202,6 +202,13 @@ export function registerOrchestration(pi: ExtensionAPI): void {
 				status,
 			);
 		},
+		renderCall(args, theme) {
+			const status = args.status ?? "(idle-or-done)";
+			let text = theme.fg("toolTitle", theme.bold("herdr_wait_agent "));
+			text += theme.fg("accent", args.target ?? "");
+			text += theme.fg("dim", `\n  status: ${status}`);
+			return new Text(text, 0, 0);
+		},
 	});
 
 	pi.registerTool({
